@@ -1,5 +1,5 @@
 {
-  "name": "@peerbits/peerbits-fhir-client",
+  "name": "fhir-client",
   "version": "1.0.0",
   "description": "Lightweight, dependency-free FHIR R4 client SDK for Node.js/TypeScript",
   "license": "Apache-2.0",
@@ -24,11 +24,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peerbits/peerbits-fhir-client.git"
+    "url": "git+https://github.com/PeerbitsSolution/fhir-client.git"
   },
-  "homepage": "https://github.com/peerbits/peerbits-fhir-client#readme",
+  "homepage": "https://github.com/PeerbitsSolution/fhir-client#readme",
   "bugs": {
-    "url": "https://github.com/peerbits/peerbits-fhir-client/issues"
+    "url": "https://github.com/PeerbitsSolution/fhir-client/issues"
   },
   "keywords": [
     "fhir",

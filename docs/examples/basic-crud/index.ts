@@ -1,6 +1,6 @@
 // Run: npx tsx docs/examples/basic-crud/index.ts
 // Demonstrates FR2 (Resource CRUD) against the public HAPI FHIR test server — no auth needed.
-import { FhirClient, type Patient } from "@peerbits/peerbits-fhir-client";
+import { FhirClient, type Patient } from "fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 

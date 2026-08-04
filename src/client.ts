@@ -227,7 +227,7 @@ export class FhirClient {
     }
 
     if (this.config.debug) {
-      console.debug(`[peerbits-fhir-client] ${method} ${redactUrlForLogging(url)} -> ${response.status}`);
+      console.debug(`[fhir-client] ${method} ${redactUrlForLogging(url)} -> ${response.status}`);
     }
 
     if (!response.ok && this.shouldRetry(attemptNumber, response.status)) {

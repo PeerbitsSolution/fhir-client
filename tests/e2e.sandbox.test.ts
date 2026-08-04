@@ -17,7 +17,7 @@ const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 const NETWORK_TIMEOUT = 20_000;
 
 // Unique per run so concurrent test runs against the shared public server don't collide.
-const runTag = `peerbits-fhir-client-test-${Date.now()}`;
+const runTag = `fhir-client-test-${Date.now()}`;
 
 function syntheticPatient(suffix: string, groupTag?: string): Patient {
   const identifier = [{ system: "urn:peerbits:test", value: `${runTag}-${suffix}` }];

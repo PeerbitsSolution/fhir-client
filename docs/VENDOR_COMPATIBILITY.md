@@ -1,6 +1,6 @@
 # Vendor Compatibility
 
-peerbits-fhir-client is built against the FHIR R4 spec itself, not any one vendor's
+fhir-client is built against the FHIR R4 spec itself, not any one vendor's
 implementation — but real EHR vendors deviate from the reference server (HAPI) in
 ways that matter (auth enforcement, capability advertisement, response shape). This
 page tracks which real-world FHIR R4 servers have actually been checked against this
@@ -44,7 +44,7 @@ tagged version (see [README §8](../README.md#8-contributing--testing)).
 No credentials needed for the checks above — only the base URL:
 
 ```ts
-import { FhirClient } from "@peerbits/peerbits-fhir-client";
+import { FhirClient } from "fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/" });
 const statement = await client.fetchCapabilityStatement();

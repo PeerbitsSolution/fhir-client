@@ -1,11 +1,11 @@
-# peerbits-fhir-client
+# fhir-client
 
 > Lightweight, dependency-free FHIR R4 client SDK for Node.js/TypeScript
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20.12-brightgreen.svg)](#3-installation)
 [![FHIR](https://img.shields.io/badge/FHIR-R4-orange.svg)](https://hl7.org/fhir/R4/)
-[![CI](https://github.com/peerbits/peerbits-fhir-client/actions/workflows/ci.yml/badge.svg)](https://github.com/peerbits/peerbits-fhir-client/actions/workflows/ci.yml)
+[![CI](https://github.com/PeerbitsSolution/fhir-client/actions/workflows/ci.yml/badge.svg)](https://github.com/PeerbitsSolution/fhir-client/actions/workflows/ci.yml)
 
 **Category:** FHIR & SMART — Interoperability Libraries · **License:** Apache-2.0 · **Status:** alpha
 
@@ -32,7 +32,7 @@ Every FHIR integration project ends up hand-rolling the same client layer: build
 search URLs, following `Bundle` pagination links, constructing batch/transaction
 bundles, and turning `OperationOutcome` error responses into something a caller can
 actually branch on. The existing public FHIR clients for TypeScript are either
-unmaintained or tied to a larger platform SDK you didn't ask for. peerbits-fhir-client
+unmaintained or tied to a larger platform SDK you didn't ask for. fhir-client
 is that thin client layer on its own: strongly typed against the FHIR R4 spec, zero
 required runtime dependencies, and usable in Node or edge/serverless runtimes since
 it's built on native `fetch`.
@@ -59,7 +59,7 @@ it's built on native `fetch`.
 ## 3. Installation
 
 ```bash
-npm install @peerbits/peerbits-fhir-client
+npm install fhir-client
 ```
 
 Requires **Node.js 20.12+** (global `fetch`, and the `node:util` APIs this package's
@@ -77,7 +77,7 @@ Runs as-is against the public [HAPI FHIR test server](https://hapi.fhir.org/base
 no auth, no setup beyond `npm install`.
 
 ```ts
-import { FhirClient, type Patient } from "@peerbits/peerbits-fhir-client";
+import { FhirClient, type Patient } from "fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 
@@ -144,7 +144,7 @@ Full runnable examples live in [docs/examples](./docs/examples):
 Batch/transaction, inline:
 
 ```ts
-import { BundleBuilder, FhirClient } from "@peerbits/peerbits-fhir-client";
+import { BundleBuilder, FhirClient } from "fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 
@@ -160,7 +160,7 @@ Composing with `peerbits-smart-launch`'s token output (illustrative — swap
 `getTokenFromSmartLaunch` for the real import once that repo is available):
 
 ```ts
-import { FhirClient, type TokenProvider } from "@peerbits/peerbits-fhir-client";
+import { FhirClient, type TokenProvider } from "fhir-client";
 // import { getStoredToken as getTokenFromSmartLaunch } from "@peerbits/peerbits-smart-launch";
 
 declare function getTokenFromSmartLaunch(): Promise<string>;
@@ -172,7 +172,7 @@ const client = new FhirClient({ baseUrl: process.env.FHIR_BASE_URL!, tokenProvid
 Handling errors (FR6 — every non-2xx response becomes a typed `FhirClientError`):
 
 ```ts
-import { FhirClientError } from "@peerbits/peerbits-fhir-client";
+import { FhirClientError } from "fhir-client";
 
 try {
   await client.read("Patient", "does-not-exist");
@@ -221,14 +221,14 @@ nvm install 20 && nvm use 20
 Then clone and run the full check:
 
 ```bash
-git clone https://github.com/peerbits/peerbits-fhir-client.git
-cd peerbits-fhir-client
+git clone https://github.com/PeerbitsSolution/fhir-client.git
+cd fhir-client
 npm install
 npm run lint && npm run typecheck && npm test && npm run build
 ```
 
 **Running the examples in [docs/examples](./docs/examples) locally** — they import
-`from "@peerbits/peerbits-fhir-client"`, same as a real consumer would, but you don't
+`from "fhir-client"`, same as a real consumer would, but you don't
 need `npm link` or to edit the import to try them from inside this repo: once
 `npm run build` has produced `dist/`, Node's package self-referencing resolves that
 import to this repo's own `dist/` automatically, because `docs/examples/*` lives
@@ -249,7 +249,7 @@ test it the way an external consumer eventually will, from outside this repo), u
 npm run build
 npm link
 cd /path/to/some-other-project
-npm link @peerbits/peerbits-fhir-client
+npm link fhir-client
 ```
 
 ### Testing
@@ -271,7 +271,7 @@ Apache License 2.0 — see [LICENSE](./LICENSE).
 
 ## 10. About Peerbits
 
-peerbits-fhir-client is part of the [Peerbits HealthTech Open Source](https://github.com/peerbits)
+fhir-client is part of the [PeerbitsSolution HealthTech Open Source](https://github.com/PeerbitsSolution)
 initiative — reusable engineering components extracted from our healthcare
 technology work, published so other teams don't have to solve the same
 problems from scratch. This repository contains generalized, reusable logic

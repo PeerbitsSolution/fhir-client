@@ -1,6 +1,6 @@
-# Contributing to peerbits-fhir-client
+# Contributing to fhir-client
 
-Thanks for considering a contribution. This repo is part of the Peerbits
+Thanks for considering a contribution. This repo is part of the PeerbitsSolution
 HealthTech Open Source initiative — small, focused, spec-grounded tools, not
 full products. Contributions that keep that scope are the easiest to accept.
 
@@ -17,8 +17,8 @@ full products. Contributions that keep that scope are the easiest to accept.
 ## Development setup
 
 ```bash
-git clone https://github.com/peerbits/peerbits-fhir-client.git
-cd peerbits-fhir-client
+git clone https://github.com/PeerbitsSolution/fhir-client.git
+cd fhir-client
 npm install
 npm test
 ```

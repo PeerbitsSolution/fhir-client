@@ -1,9 +1,9 @@
 # Default owners for everything in this repo, unless a later match takes precedence.
 
-*                           @peerbits/fhir-client-maintainers
+*                           @PeerbitsSolution/fhir-client-maintainers
 
 # Security-critical paths always require review from the owning team,
 # even if a contributor has broader merge rights.
-/src/auth.ts                @peerbits/fhir-client-maintainers
-/src/client.ts               @peerbits/fhir-client-maintainers
-SECURITY.md                 @peerbits/fhir-client-maintainers
+/src/auth.ts                @PeerbitsSolution/fhir-client-maintainers
+/src/client.ts               @PeerbitsSolution/fhir-client-maintainers
+SECURITY.md                 @PeerbitsSolution/fhir-client-maintainers

@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-If you believe you've found a security vulnerability in peerbits-fhir-client,
+If you believe you've found a security vulnerability in fhir-client,
 please **do not open a public issue**. Instead:
 
 - Email: security@peerbits.com  <!-- TODO: confirm actual reporting address -->
