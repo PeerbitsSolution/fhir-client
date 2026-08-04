@@ -1,0 +1,4 @@
+# Not applicable to this repo: peerbits-fhir-client is a library with CLI-style
+# examples (docs/examples/*) that talk to a remote FHIR sandbox — there is no
+# example server to containerize. Kept as a placeholder for structural parity
+# with the org-wide repo template; delete if this repo never needs it.
