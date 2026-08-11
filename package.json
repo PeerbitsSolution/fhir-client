@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Lightweight, dependency-free FHIR R4 client SDK for Node.js/TypeScript",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
