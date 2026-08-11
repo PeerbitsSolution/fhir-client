@@ -7,7 +7,7 @@
 // NEEDS HUMAN SECURITY REVIEW: this example only *consumes* a token — the token
 // acquisition, storage, and refresh logic below is a placeholder standing in for
 // peerbits-smart-launch's real token store, not production-grade auth code itself.
-import { FhirClient, type TokenProvider } from "fhir-client";
+import { FhirClient, type TokenProvider } from "@peerbits/fhir-client";
 
 // In a real app this would be, e.g.:
 //   import { getStoredToken } from "@peerbits/peerbits-smart-launch";

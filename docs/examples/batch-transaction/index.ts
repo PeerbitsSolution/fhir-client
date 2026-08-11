@@ -1,7 +1,7 @@
 // Run: npx tsx docs/examples/batch-transaction/index.ts
 // Demonstrates FR4 (batch/transaction Bundle construction + execution) against the
 // public HAPI FHIR test server.
-import { BundleBuilder, FhirClient, type FhirResource } from "fhir-client";
+import { BundleBuilder, FhirClient, type FhirResource } from "@peerbits/fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 

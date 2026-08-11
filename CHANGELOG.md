@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   a duplicate-resource conflict (`412`) after repeated runs.
 - README's local-testing instructions for `docs/examples/*` incorrectly claimed they
   need `npm link` or an edited import to run from inside this repo. They don't —
-  Node's package self-referencing resolves `"fhir-client"` to this
+  Node's package self-referencing resolves `"@peerbits/fhir-client"` to this
   repo's own `dist/` automatically once `npm run build` has run, since the examples
   live inside the package whose own `package.json` declares that name. Corrected the
   README and clarified `npm link` is only needed to test from a separate project.

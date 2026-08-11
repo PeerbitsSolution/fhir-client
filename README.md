@@ -59,7 +59,7 @@ it's built on native `fetch`.
 ## 3. Installation
 
 ```bash
-npm install fhir-client
+npm install @peerbits/fhir-client
 ```
 
 Requires **Node.js 20.12+** (global `fetch`, and the `node:util` APIs this package's
@@ -77,7 +77,7 @@ Runs as-is against the public [HAPI FHIR test server](https://hapi.fhir.org/base
 no auth, no setup beyond `npm install`.
 
 ```ts
-import { FhirClient, type Patient } from "fhir-client";
+import { FhirClient, type Patient } from "@peerbits/fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 
@@ -144,7 +144,7 @@ Full runnable examples live in [docs/examples](./docs/examples):
 Batch/transaction, inline:
 
 ```ts
-import { BundleBuilder, FhirClient } from "fhir-client";
+import { BundleBuilder, FhirClient } from "@peerbits/fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 
@@ -160,7 +160,7 @@ Composing with `peerbits-smart-launch`'s token output (illustrative — swap
 `getTokenFromSmartLaunch` for the real import once that repo is available):
 
 ```ts
-import { FhirClient, type TokenProvider } from "fhir-client";
+import { FhirClient, type TokenProvider } from "@peerbits/fhir-client";
 // import { getStoredToken as getTokenFromSmartLaunch } from "@peerbits/peerbits-smart-launch";
 
 declare function getTokenFromSmartLaunch(): Promise<string>;
@@ -172,7 +172,7 @@ const client = new FhirClient({ baseUrl: process.env.FHIR_BASE_URL!, tokenProvid
 Handling errors (FR6 — every non-2xx response becomes a typed `FhirClientError`):
 
 ```ts
-import { FhirClientError } from "fhir-client";
+import { FhirClientError } from "@peerbits/fhir-client";
 
 try {
   await client.read("Patient", "does-not-exist");
@@ -228,7 +228,7 @@ npm run lint && npm run typecheck && npm test && npm run build
 ```
 
 **Running the examples in [docs/examples](./docs/examples) locally** — they import
-`from "fhir-client"`, same as a real consumer would, but you don't
+`from "@peerbits/fhir-client"`, same as a real consumer would, but you don't
 need `npm link` or to edit the import to try them from inside this repo: once
 `npm run build` has produced `dist/`, Node's package self-referencing resolves that
 import to this repo's own `dist/` automatically, because `docs/examples/*` lives
@@ -249,7 +249,7 @@ test it the way an external consumer eventually will, from outside this repo), u
 npm run build
 npm link
 cd /path/to/some-other-project
-npm link fhir-client
+npm link @peerbits/fhir-client
 ```
 
 ### Testing

@@ -31,7 +31,7 @@ want to verify any of it against the source directly.
 - **Node.js 20.12+** (or another runtime with a spec-compliant global `fetch` —
   Deno, Bun, and most edge/serverless runtimes qualify). This package is **ESM
   only** (`"type": "module"` in `package.json`); a CommonJS host must use
-  `await import("fhir-client")`, not `require(...)`.
+  `await import("@peerbits/fhir-client")`, not `require(...)`.
 - An FHIR R4-compliant server reachable over `https://`. This client does not talk to
   DSTU2/STU3/R5 servers — field names and search parameters are grounded in R4
   specifically (see [README §5](../README.md#5-architecture)).
@@ -43,7 +43,7 @@ want to verify any of it against the source directly.
 ## 2. Installing for production
 
 ```bash
-npm install fhir-client
+npm install @peerbits/fhir-client
 ```
 
 - **Pin a version range you've actually tested** (`^1.0.0` is fine once published;
@@ -58,7 +58,7 @@ npm install fhir-client
 ## 3. Configuration reference & recommended production values
 
 ```ts
-import { FhirClient } from "fhir-client";
+import { FhirClient } from "@peerbits/fhir-client";
 
 const client = new FhirClient({
   baseUrl: process.env.FHIR_BASE_URL!,       // required, https:// enforced
@@ -162,7 +162,7 @@ Every non-2xx response is thrown as a typed `FhirClientError`
 (`instanceof Error`), never a raw HTTP error:
 
 ```ts
-import { FhirClientError } from "fhir-client";
+import { FhirClientError } from "@peerbits/fhir-client";
 
 try {
   await client.update(patient);

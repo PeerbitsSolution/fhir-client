@@ -44,7 +44,7 @@ tagged version (see [README §8](../README.md#8-contributing--testing)).
 No credentials needed for the checks above — only the base URL:
 
 ```ts
-import { FhirClient } from "fhir-client";
+import { FhirClient } from "@peerbits/fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/" });
 const statement = await client.fetchCapabilityStatement();

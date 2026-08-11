@@ -1,6 +1,6 @@
 // Run: npx tsx docs/examples/search-and-paginate/index.ts
 // Demonstrates FR3 (typed search) and FR4 (pagination) against the public HAPI FHIR test server.
-import { FhirClient } from "fhir-client";
+import { FhirClient } from "@peerbits/fhir-client";
 
 const client = new FhirClient({ baseUrl: "https://hapi.fhir.org/baseR4/" });
 
