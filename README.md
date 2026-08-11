@@ -64,12 +64,14 @@ npm install @peerbits/fhir-client
 
 Requires **Node.js 20.12+** (global `fetch`, and the `node:util` APIs this package's
 tooling depends on) or any modern runtime that provides a spec-compliant `fetch`.
-This package ships **ESM only** (`"type": "module"`) — consume it with `import`, or
-`await import(...)` from CommonJS.
+This package ships **ESM only** (`"type": "module"`) — consume it with `import`.
+From CommonJS: **Node.js 22.12+** can `require()` it directly (Node's native
+`require(esm)` support); on older Node, use `await import("@peerbits/fhir-client")`
+instead — `require()` fails there with a clear `ERR_REQUIRE_ESM` error.
 
-> **Not yet published to npm?** If you're working from a local clone before the first
-> npm release, see [Local development](#local-development) under Contributing &
-> Testing for how to build and link it locally instead.
+> **Working from a local clone instead of npm?** See
+> [Local development](#local-development) under Contributing & Testing for how to
+> build and link it locally.
 
 ## 4. Quick Start
 
@@ -241,9 +243,9 @@ npx tsx docs/examples/search-and-paginate/index.ts
 npx tsx docs/examples/batch-transaction/index.ts
 ```
 
-To try the package from a **separate** project before it's published to npm (i.e. to
-test it the way an external consumer eventually will, from outside this repo), use
-`npm link` instead:
+To try an unreleased local change from a **separate** project (i.e. before it's
+published to npm — testing the way an external consumer eventually will, from
+outside this repo), use `npm link` instead:
 
 ```bash
 npm run build

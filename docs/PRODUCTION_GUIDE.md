@@ -30,8 +30,9 @@ want to verify any of it against the source directly.
 
 - **Node.js 20.12+** (or another runtime with a spec-compliant global `fetch` —
   Deno, Bun, and most edge/serverless runtimes qualify). This package is **ESM
-  only** (`"type": "module"` in `package.json`); a CommonJS host must use
-  `await import("@peerbits/fhir-client")`, not `require(...)`.
+  only** (`"type": "module"` in `package.json`). A CommonJS host on **Node 22.12+**
+  can `require()` it directly (native `require(esm)` support); on older Node, use
+  `await import("@peerbits/fhir-client")` instead.
 - An FHIR R4-compliant server reachable over `https://`. This client does not talk to
   DSTU2/STU3/R5 servers — field names and search parameters are grounded in R4
   specifically (see [README §5](../README.md#5-architecture)).
@@ -247,8 +248,9 @@ shared/third-party server:
   or sandbox test suites, both Node-only). Cloudflare Workers/Vercel Edge/Deno Deploy
   aren't individually verified — this isn't exercised in this repo's own CI; verify
   your specific target runtime as part of your own deploy pipeline.
-- **Module format**: ESM only. If your production bundler/runtime is CommonJS-only,
-  use dynamic `import()` rather than `require()`.
+- **Module format**: ESM only. On Node 22.12+, `require()` works natively (verified);
+  on older Node or other CommonJS-only bundlers/runtimes, use dynamic `import()`
+  instead.
 - **Bundling**: this package has zero required runtime dependencies, so bundling it
   (webpack/esbuild/rollup/etc. for a frontend or edge deployment) doesn't pull in a
   dependency tree — just this package's own compiled output.
@@ -284,7 +286,7 @@ can change without a major version bump.
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `FhirClient requires an https:// baseUrl` thrown at startup | `baseUrl` is `http://` (or malformed) without `allowInsecureHttp` | Use `https://`; only set `allowInsecureHttp: true` for local sandbox work, never in deployed config |
-| `ERR_MODULE_NOT_FOUND` / `require() of ES Module not supported` | Consuming this ESM-only package via `require()` | Use `import` or `await import(...)` — see [§11](#11-runtime--deployment-compatibility) |
+| `ERR_REQUIRE_ESM` — "require() of ES Module ... not supported" | `require()`-ing this ESM-only package on Node < 22.12 | Use `import`, `await import(...)`, or upgrade to Node 22.12+ where `require()` works natively — see [§11](#11-runtime--deployment-compatibility) |
 | `FhirClientError` with `status: 401` or `403` | `tokenProvider` returned an invalid/expired token, or none was configured for a server that requires auth | Check your token source's refresh logic; confirm `tokenProvider` is actually set in config |
 | `FhirClientError` with `status: 404` and empty `issues` | Server returned a 404 without an `OperationOutcome` body | Expected fallback behavior — branch on `error.status`, not `error.issues`, for servers that don't send `OperationOutcome` on every error |
 | Requests never retry after a `503` | `retry` wasn't configured — it's off by default | Set `retry: { attempts: ... }` explicitly |

@@ -44,6 +44,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   receiver); Node's `fetch` tolerates the unbound call, which is why this only
   surfaced when the client was actually run in a browser — found while building an
   in-browser demo, not by the Node-only unit/sandbox test suites.
+- `package.json`'s `exports` map now includes a `default` condition alongside
+  `import`. Without it, `require()`-ing this package failed with a confusing
+  `ERR_PACKAGE_PATH_NOT_EXPORTED` ("no exports main defined") instead of the clear,
+  expected `ERR_REQUIRE_ESM`. Found by installing the actual packed tarball into a
+  clean CommonJS project rather than only testing inside this repo. As a bonus, the
+  fix also means `require()` now works natively on Node 22.12+ (verified), not just
+  throws a clearer error — Node's `require(esm)` support picks up the `default`
+  condition.
+- Renamed the npm package to `@peerbits/fhir-client` (scoped) after the unscoped
+  `fhir-client` was rejected by npm on first publish attempt: "Package name too
+  similar to existing package fhirclient". Propagated to every install/import
+  example across README and docs — see the repo's own commit history for the full
+  list of touched files.
 
 ## [1.0.0] - 2026-07-29
 
